@@ -1,32 +1,37 @@
 package edu.dab.modules.doctor_availability.presentation.apis;
 
 import edu.dab.modules.doctor_availability.business.services.DoctorAvailabilityService;
-import edu.dab.modules.doctor_availability.presentation.converters.SlotModelDtoConverter;
+import edu.dab.modules.doctor_availability.presentation.converters.SlotModelConverter;
+import edu.dab.modules.doctor_availability.presentation.dtos.SlotCreateRequest;
 import edu.dab.modules.doctor_availability.presentation.dtos.SlotDto;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/api/slots")
 public class DoctorAvailabilityController {
 
   private final DoctorAvailabilityService doctorAvailabilityService;
-  private final SlotModelDtoConverter slotModelDtoConverter;
+  private final SlotModelConverter slotModelConverter;
 
   public DoctorAvailabilityController(
-      DoctorAvailabilityService doctorAvailabilityService,
-      SlotModelDtoConverter slotModelDtoConverter) {
+      DoctorAvailabilityService doctorAvailabilityService, SlotModelConverter slotModelConverter) {
     this.doctorAvailabilityService = doctorAvailabilityService;
-    this.slotModelDtoConverter = slotModelDtoConverter;
+    this.slotModelConverter = slotModelConverter;
   }
 
   @GetMapping
   public ResponseEntity<List<SlotDto>> getSlots() {
     List<SlotDto> slots =
-        slotModelDtoConverter.convertModelsToDtos(doctorAvailabilityService.getAllSlots());
+        slotModelConverter.convertModelsToDtos(doctorAvailabilityService.getAllSlots());
     return ResponseEntity.ok(slots);
+  }
+
+  @PostMapping
+  public ResponseEntity<UUID> createSlot(@RequestBody SlotCreateRequest slotCreateRequest) {
+    return ResponseEntity.ok(
+        doctorAvailabilityService.createSlot(slotModelConverter.convertToModel(slotCreateRequest)));
   }
 }

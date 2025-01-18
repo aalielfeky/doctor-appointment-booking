@@ -1,3 +1,5 @@
 package edu.dab.modules.doctor_availability.business.models;
 
-public record SlotModel(String doctorName) {}
+import java.time.LocalDateTime;
+
+public record SlotModel(LocalDateTime time, String doctorName, boolean isReserved, Double cost) {}

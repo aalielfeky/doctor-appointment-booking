@@ -15,7 +15,17 @@ public class SlotEntityModelConverter {
     return slotModels;
   }
 
-  public SlotModel toModel(SlotEntity slotEntity) {
-    return new SlotModel(slotEntity.doctorName());
+  public SlotModel toModel(SlotEntity entity) {
+    return new SlotModel(
+        entity.getTime(), entity.getDoctorName(), entity.isReserved(), entity.getCost());
+  }
+
+  public SlotEntity convertModelToEntity(SlotModel model) {
+    SlotEntity entity = new SlotEntity();
+    entity.setTime(model.time());
+    entity.setDoctorName(model.doctorName());
+    entity.setReserved(model.isReserved());
+    entity.setCost(model.cost());
+    return entity;
   }
 }

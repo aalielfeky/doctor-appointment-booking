@@ -4,6 +4,7 @@ import edu.dab.modules.doctor_availability.business.converters.SlotEntityModelCo
 import edu.dab.modules.doctor_availability.business.models.SlotModel;
 import edu.dab.modules.doctor_availability.data.repos.SlotRepo;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,5 +20,9 @@ public class DoctorAvailabilityService {
 
   public List<SlotModel> getAllSlots() {
     return slotConverter.convertEntitiesToModels(slotRepo.findAllSlots());
+  }
+
+  public UUID createSlot(SlotModel slotModel) {
+    return slotRepo.saveSlot(slotConverter.convertModelToEntity(slotModel));
   }
 }
