@@ -23,4 +23,12 @@ public class PatientRepo {
                   .id(UUID.fromString("12083570-6462-4cd4-baa2-3f2805945db4"))
                   .patientName("PATIENT_3")
                   .build()));
+
+  public PatientEntity findPatientById(UUID patientId) {
+    // TODO: handle exceptional flow
+    return PATIENTS_ENTITIES.stream()
+        .filter(patient -> patient.getId().equals(patientId))
+        .findFirst()
+        .get();
+  }
 }

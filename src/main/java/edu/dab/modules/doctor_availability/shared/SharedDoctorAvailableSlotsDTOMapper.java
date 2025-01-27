@@ -11,7 +11,7 @@ class SharedDoctorAvailableSlotsDTOMapper {
     return entities.stream().map(this::convertEntityToDTO).toList();
   }
 
-  private SharedDoctorAvailableSlotsDTO convertEntityToDTO(SlotEntity entity) {
+  public SharedDoctorAvailableSlotsDTO convertEntityToDTO(SlotEntity entity) {
     return new SharedDoctorAvailableSlotsDTO(
         entity.getId(), entity.getDoctorName(), entity.getTime(), entity.getCost());
   }

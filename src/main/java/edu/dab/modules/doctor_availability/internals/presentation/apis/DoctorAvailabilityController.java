@@ -31,6 +31,7 @@ public class DoctorAvailabilityController {
 
   @PostMapping
   public ResponseEntity<UUID> createSlot(@RequestBody SlotCreateRequest slotCreateRequest) {
+    // TODO: validate request
     return ResponseEntity.ok(
         doctorAvailabilityService.createSlot(slotModelConverter.convertToModel(slotCreateRequest)));
   }

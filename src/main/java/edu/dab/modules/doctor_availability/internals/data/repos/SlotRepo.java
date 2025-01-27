@@ -62,4 +62,9 @@ public class SlotRepo {
         .ifPresent(slot -> slot.setReserved(true));
     // TODO: handle exceptional flow
   }
+
+  public SlotEntity findSlotById(UUID slotId) {
+    // TODO: handle exceptional flow
+    return SLOT_ENTITIES.stream().filter(slot -> slot.getId().equals(slotId)).findFirst().get();
+  }
 }
