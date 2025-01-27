@@ -11,6 +11,7 @@ public class AppointmentModel {
   private UUID slotId;
   private UUID patientId;
   private LocalDateTime reservedAt;
+  private AppointmentStatusEnum status;
 
   private String doctorName;
   private String patientName;
@@ -20,6 +21,7 @@ public class AppointmentModel {
     this.slotId = slotId;
     this.patientId = patientId;
     this.reservedAt = LocalDateTime.now();
+    this.status = AppointmentStatusEnum.UPCOMING;
   }
 
   public static AppointmentModel create(String slotId, String patientId) {

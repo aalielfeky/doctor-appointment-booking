@@ -1,4 +1,4 @@
-package edu.dab.modules.doctor_availability.internals.presentation.apis;
+package edu.dab.modules.doctor_availability.internals.presentation.controllers;
 
 import edu.dab.modules.doctor_availability.internals.business.services.DoctorAvailabilityService;
 import edu.dab.modules.doctor_availability.internals.presentation.converters.SlotModelConverter;

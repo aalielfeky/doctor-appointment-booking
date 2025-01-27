@@ -40,6 +40,7 @@ public class AppointmentRepo implements ICreateAppointment {
         .slotId(appointmentModel.getSlotId())
         .patientId(appointmentModel.getPatientId())
         .reservedAt(appointmentModel.getReservedAt())
+        .status(appointmentModel.getStatus())
         .build();
   }
 
