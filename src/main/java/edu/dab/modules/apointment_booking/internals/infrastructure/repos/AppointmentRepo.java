@@ -40,6 +40,7 @@ public class AppointmentRepo implements ICreateAppointment {
         .slotId(appointmentModel.getSlotId())
         .patientId(appointmentModel.getPatientId())
         .reservedAt(appointmentModel.getReservedAt())
+        .appointmentTime(appointmentModel.getAppointmentTime())
         .status(appointmentModel.getStatus())
         .build();
   }
@@ -55,5 +56,9 @@ public class AppointmentRepo implements ICreateAppointment {
     appointmentModel.setDoctorName(doctorName);
     appointmentModel.setAppointmentTime(appointmentTime);
     appointmentModel.setPatientName(patientName);
+  }
+
+  public List<AppointmentEntity> getAllAppointments() {
+    return APPOINTMENT_ENTITIES;
   }
 }

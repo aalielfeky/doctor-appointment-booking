@@ -1,6 +1,6 @@
 package edu.dab.modules.apointment_booking.internals.infrastructure.entities;
 
-import edu.dab.modules.apointment_booking.internals.domain.models.AppointmentStatusEnum;
+import edu.dab.modules.shared.AppointmentStatusEnum;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Builder;
@@ -14,6 +14,7 @@ public class AppointmentEntity {
   private UUID slotId;
   private UUID patientId;
   private LocalDateTime reservedAt;
+  private LocalDateTime appointmentTime;
   private AppointmentStatusEnum status;
 
   @Builder
@@ -22,11 +23,13 @@ public class AppointmentEntity {
       UUID slotId,
       UUID patientId,
       LocalDateTime reservedAt,
+      LocalDateTime appointmentTime,
       AppointmentStatusEnum status) {
     this.id = id;
     this.slotId = slotId;
     this.patientId = patientId;
     this.reservedAt = reservedAt;
+    this.appointmentTime = appointmentTime;
     this.status = status;
   }
 }

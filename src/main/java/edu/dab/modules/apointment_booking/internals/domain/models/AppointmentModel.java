@@ -2,6 +2,8 @@ package edu.dab.modules.apointment_booking.internals.domain.models;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+import edu.dab.modules.shared.AppointmentStatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
