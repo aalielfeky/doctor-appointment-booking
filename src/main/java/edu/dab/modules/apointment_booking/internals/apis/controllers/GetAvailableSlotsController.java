@@ -1,4 +1,4 @@
-package edu.dab.modules.apointment_booking.internals.apis;
+package edu.dab.modules.apointment_booking.internals.apis.controllers;
 
 import edu.dab.modules.apointment_booking.internals.application.dtos.AvailableSlotsDTO;
 import edu.dab.modules.apointment_booking.internals.application.handlers.GetAvailableSlotsRequestHandler;

@@ -13,6 +13,6 @@ class SharedDoctorAvailableSlotsDTOMapper {
 
   private SharedDoctorAvailableSlotsDTO convertEntityToDTO(SlotEntity entity) {
     return new SharedDoctorAvailableSlotsDTO(
-        entity.getDoctorName(), entity.getTime(), entity.getCost());
+        entity.getId(), entity.getDoctorName(), entity.getTime(), entity.getCost());
   }
 }

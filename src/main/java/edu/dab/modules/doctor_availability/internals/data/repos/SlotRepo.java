@@ -54,4 +54,12 @@ public class SlotRepo {
   public List<SlotEntity> findAvailableSlots() {
     return SLOT_ENTITIES.stream().filter(slot -> !slot.isReserved()).toList();
   }
+
+  public void reserveSlot(UUID slotId) {
+    SLOT_ENTITIES.stream()
+        .filter(slot -> slot.getId().equals(slotId))
+        .findFirst()
+        .ifPresent(slot -> slot.setReserved(true));
+    // TODO: handle exceptional flow
+  }
 }
