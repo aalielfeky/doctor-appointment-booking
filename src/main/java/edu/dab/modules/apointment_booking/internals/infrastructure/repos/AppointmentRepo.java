@@ -5,6 +5,7 @@ import edu.dab.modules.apointment_booking.internals.application.dtos.AvailableSl
 import edu.dab.modules.apointment_booking.internals.domain.models.AppointmentModel;
 import edu.dab.modules.apointment_booking.internals.infrastructure.entities.AppointmentEntity;
 import edu.dab.modules.apointment_booking.internals.infrastructure.gateways.DoctorAvailabilityGateway;
+import edu.dab.modules.shared.AppointmentStatusEnum;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +61,15 @@ public class AppointmentRepo implements ICreateAppointment {
 
   public List<AppointmentEntity> getAllAppointments() {
     return APPOINTMENT_ENTITIES;
+  }
+
+  public void updateAppointmentStatusById(UUID appointmentId, AppointmentStatusEnum newStatus) {
+    APPOINTMENT_ENTITIES.stream()
+        .filter(entity -> entity.getId().equals(appointmentId))
+        .findFirst()
+        .ifPresent(
+            entity -> {
+              entity.setStatus(newStatus);
+            });
   }
 }
